@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   background: #f9f9f9;
@@ -23,16 +24,38 @@ h1 {
 
 #task-form {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  align-items: stretch;
 }
 
+#task-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+}
+
+#task-form button {
+  padding: 0 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0 8px 8px 0;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+#task-form button:hover {
+  background: #0056b3;
+}
+
+/* Lista de tareas */
 #task-list {
   list-style: none;
   padding: 0;
 }
 
-#task-list li {
+.task-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,6 +65,27 @@ h1 {
   border-radius: 8px;
 }
 
+.task-text {
+  flex-grow: 1;
+}
+
+/* Botones de cada tarea */
+.task-buttons button {
+  border: none;
+  background: #00000033;
+  cursor: pointer;
+  font-size: clamp(14px, 2vw, 20px);
+  line-height: 1;
+  width: clamp(30px, 5vw, 50px); 
+  aspect-ratio: 1 / 1;
+  border-radius: 50%; 
+}
+
+.task-buttons button:hover {
+  opacity: 0.7;
+}
+
+/* Tarea completada */
 .done {
   text-decoration: line-through;
   color: gray;
