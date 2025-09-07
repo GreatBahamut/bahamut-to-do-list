@@ -41,41 +41,21 @@ function renderTareas() {
 
   const tareasOrdenadas = [...tareas].sort((a, b) => a.id - b.id);
 
-  tareasOrdenadas.forEach(tarea => {
-    const li = document.createElement("li");
-    li.className = "task-item";
-    li.dataset.id = tarea.id;
-
-    const span = document.createElement("span");
-    span.className = "task-text";
-    span.textContent = tarea.texto;
-    if (tarea.done) {
-      span.style.textDecoration = "line-through";
-    }
-
-    li.appendChild(span);
-
-    if (tarea.done) {
-      const status = document.createElement("span");
-      status.className = "task-status";
-      status.textContent = " REALIZADA! 👍🏻";
-      span.insertAdjacentElement("afterend", status);
-    }
-
-    const buttonsDiv = document.createElement("div");
-    buttonsDiv.className = "task-buttons";
-    buttonsDiv.innerHTML = BOTONES_TAREA;
-    li.appendChild(buttonsDiv);
-
-    lista.appendChild(li);
-  });
+  tareasOrdenadas.forEach(tarea => renderTarea(tarea));
 }
 
 // --- Funciones para agregar tarea ---
 function crearTarea(texto) {
   const noRealizadas = tareas.filter(t => !t.done);
   const maxId = noRealizadas.length > 0 ? Math.max(...noRealizadas.map(t => t.id)) : 0;
-  return { id: maxId + 1, texto, done: false };
+  const ahora = new Date();
+
+  return {
+    id: maxId + 1,
+    texto,
+    done: false,
+    fecha: ahora.toLocaleString()
+  };
 }
 
 function agregarTarea(texto) {
@@ -91,24 +71,44 @@ function renderTarea(tarea) {
   li.className = "task-item";
   li.dataset.id = tarea.id;
 
+  // --- Contenedor principal ---
+  const contenidoDiv = document.createElement("div");
+  contenidoDiv.className = "task-content";
+
+  // Texto
   const span = document.createElement("span");
   span.className = "task-text";
   span.textContent = tarea.texto;
-  li.appendChild(span);
-
   if (tarea.done) {
     span.style.textDecoration = "line-through";
+  }
+  contenidoDiv.appendChild(span);
+
+  // Estado
+  if (tarea.done) {
     const status = document.createElement("span");
     status.className = "task-status";
     status.textContent = " REALIZADA! 👍🏻";
-    span.insertAdjacentElement("afterend", status);
+    contenidoDiv.appendChild(status);
   }
 
+  // Botones
   const buttonsDiv = document.createElement("div");
   buttonsDiv.className = "task-buttons";
   buttonsDiv.innerHTML = BOTONES_TAREA;
-  li.appendChild(buttonsDiv);
+  contenidoDiv.appendChild(buttonsDiv);
 
+  li.appendChild(contenidoDiv);
+
+  // Fecha (si existe)
+  if (tarea.fecha) {
+    const fechaDiv = document.createElement("div");
+    fechaDiv.className = "task-date";
+    fechaDiv.textContent = tarea.fecha;
+    li.appendChild(fechaDiv);
+  }
+
+  // Insertar en orden
   const liSiguiente = Array.from(lista.children).find(
     child => Number(child.dataset.id) > tarea.id
   );
