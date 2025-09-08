@@ -26,7 +26,7 @@ Proyecto de lista de tareas implementado en **JavaScript vanilla** para practica
 
 ## 🖼️ Vista previa
 
-![Demostración en uso](assets/demo.gif)
+![Demostración en uso](assets/preview.gif)
 
 ## 🛠️ Tecnologías usadas
 
