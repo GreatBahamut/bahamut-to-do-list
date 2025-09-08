@@ -9,7 +9,7 @@ body {
 }
 
 .app {
-  background: #fff;
+  background: #800606;
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
@@ -79,12 +79,12 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20%; /* altura de la franja inferior */
-  background-color: #000; /* color de la franja */
+  height: 20%;
+  background-color: #000;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  opacity: 0.2; /* opcional, para que no tape todo */
-  pointer-events: none; /* que no interfiera con los botones */
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 /* Contenido principal de cada tarea */
@@ -123,11 +123,40 @@ h1 {
 }
 
 /* Estado realizada */
-.done {
+.task-item.done .task-text {
   text-decoration: line-through;
   color: #888;
 }
 
+/* Opacidad general más baja */
+.task-item.done {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* Desactivar botones excepto delete */
+.task-item.done .task-buttons button:not(.delete-btn) {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Delete resaltado cuando la tarea está hecha */
+.task-item.done .delete-btn {
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 1;
+  background: #e74c3c;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.task-item.done .delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.15);
+}
+
+/* Estado visual */
 .task-status {
   display: inline-block;
   margin-left: 8px;
