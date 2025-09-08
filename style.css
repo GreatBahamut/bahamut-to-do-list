@@ -9,11 +9,11 @@ body {
 }
 
 .app {
-  background: #800606;
+  background: #FADADD;
   padding: 2rem;
   border-radius: 16px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  width: 400px;
+  box-shadow: 0 6px 15px #A0525D;
+  width: 35%;
   max-width: 100%;
 }
 
@@ -21,7 +21,7 @@ h1 {
   margin-bottom: 1rem;
   margin-top: 0px;
   text-align: center;
-  color: #333;
+  color: #A0525D;
 }
 
 /* Formulario */
@@ -32,26 +32,31 @@ h1 {
 .task-input {
   flex: 1;
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  color: #A0525D;
+  border: 1px solid #CC5500;
   border-right: none;
   border-radius: 8px 0 0 8px;
   outline: none;
   font-size: 1rem;
 }
 
+.task-input::placeholder {
+  color: #FADADD;
+}
+
 .task-form button {
   padding: 0 1rem;
-  border: 1px solid #007bff;
+  border: 1px solid #CC5500;
   border-radius: 0 8px 8px 0;
-  background: #007bff;
-  color: white;
+  background: #A0525D;
+  color: #c97d85;
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.2s ease;
 }
 
 .task-form button:hover {
-  background: #0056b3;
+  background: #a13846;
 }
 
 /* Lista */
@@ -67,7 +72,7 @@ h1 {
   padding: 0.75rem 1rem 0px;
   margin-bottom: 0.75rem;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px #FFA07A;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -79,12 +84,12 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20%;
-  background-color: #000;
+  height: 15px;
+  background-color: #FFA07A;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  opacity: 0.2;
   pointer-events: none;
+  opacity: 0.2;
 }
 
 /* Contenido principal de cada tarea */
@@ -97,7 +102,7 @@ h1 {
 .task-text {
   flex-grow: 1;
   font-size: 1rem;
-  color: #333;
+  color: #9c3030;
   margin-right: 1rem;
 }
 
@@ -108,7 +113,7 @@ h1 {
 
 .task-buttons button {
   border: none;
-  background: #e0e0e0;
+  background: #FFCC99;
   cursor: pointer;
   font-size: 1.1rem;
   width: 36px; 
@@ -118,14 +123,14 @@ h1 {
 }
 
 .task-buttons button:hover {
-  background: #d0d0d0;
+  background: #f8ba7c;
   transform: scale(1.1);
 }
 
 /* Estado realizada */
 .task-item.done .task-text {
   text-decoration: line-through;
-  color: #888;
+  color: #9c3030;
 }
 
 /* Opacidad general más baja */
@@ -138,6 +143,7 @@ h1 {
 .task-item.done .task-buttons button:not(.delete-btn) {
   pointer-events: none;
   opacity: 0.6;
+  background-color: #e74c3c;
 }
 
 /* Delete resaltado cuando la tarea está hecha */
@@ -145,21 +151,22 @@ h1 {
   pointer-events: auto;
   cursor: pointer;
   opacity: 1;
-  background: #e74c3c;
+  background: #FFCC99;
   color: #fff;
   font-weight: bold;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .task-item.done .delete-btn:hover {
-  background: #c0392b;
+  background: #ffbe7d;
   transform: scale(1.15);
 }
 
 /* Estado visual */
 .task-status {
   display: inline-block;
-  margin-left: 8px;
+  margin-left: 2rem;
+  margin-right: 2rem;
   font-weight: bold;
   color: #2ecc71;
 }
@@ -167,7 +174,7 @@ h1 {
 /* Fecha */
 .task-date {
   font-size: 0.75em;
-  color: #777;
+  color: #A0525D;
   margin-top: 6px;
   text-align: center;
 }

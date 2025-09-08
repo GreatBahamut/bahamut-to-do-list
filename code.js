@@ -98,7 +98,7 @@ function crearTarea(texto) {
     day: "2-digit",
     month: "2-digit",
     year: "numeric"
-  }) + " " + ahora.toLocaleTimeString("es-ES", {
+  }) + " - " + ahora.toLocaleTimeString("es-ES", {
     hour: "2-digit",
     minute: "2-digit"
   });
@@ -116,11 +116,17 @@ function agregarTarea(texto) {
 // --- Handlers ---
 function manejarSubmit(e) {
   e.preventDefault();
-  const texto = input.value.trim();
-  if (!texto) return;
-  agregarTarea(texto);
+
+  // Dispara la validación nativa del navegador
+  if (!input.checkValidity()) {
+    input.reportValidity(); // muestra el mensaje nativo
+    return;
+  }
+
+  agregarTarea(input.value.trim());
   input.value = "";
 }
+
 
 // --- Eliminar ---
 function eliminarTarea(id, li) {
